@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+nvim --clean --headless -l /dev/stdin <<'LUA'
+local ok, err = loadfile("init.lua")
+if not ok then
+  io.stderr:write(err .. "\n")
+  os.exit(1)
+end
+LUA
